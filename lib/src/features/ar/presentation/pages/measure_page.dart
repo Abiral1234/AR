@@ -22,20 +22,6 @@ class _MeasurePageState extends State<MeasurePage> {
   bool _isVisible = true; // Controls visibility
   String? cubeName;
 
-  void _toggleVisibility() {
-    if (_isVisible) removeCube();
-    if (!_isVisible) addCube();
-    setState(() {
-      _isVisible = !_isVisible;
-    });
-  }
-
-  @override
-  void dispose() {
-    arkitController.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) => Scaffold(
       appBar: AppBar(
@@ -69,6 +55,7 @@ class _MeasurePageState extends State<MeasurePage> {
           ),
         ],
       ));
+//This function adds cube to the ARController
   addCube() {
     final cube = ARKitBox(
       width: 0.0508, //0.0508 meter = 2 inches
@@ -90,6 +77,7 @@ class _MeasurePageState extends State<MeasurePage> {
     cubeName = node.name;
   }
 
+//This function removes cube from the ARController
   removeCube() {
     arkitController.remove(cubeName!);
   }
@@ -97,6 +85,7 @@ class _MeasurePageState extends State<MeasurePage> {
   //This function is called when AR View is created and also this function adds a cube
   void onARKitViewCreated(ARKitController arkitController) {
     this.arkitController = arkitController;
+    //Initiates the cube
     final cube = ARKitBox(
       width: 0.0508, //0.0508 meter = 2 inches
       height: 0.0508,
@@ -126,6 +115,7 @@ class _MeasurePageState extends State<MeasurePage> {
   }
 
   void _onARTapHandler(ARKitTestResult point) {
+    //gets the 3d position of the point tapped
     final position = vector.Vector3(
       point.worldTransform.getColumn(3).x,
       point.worldTransform.getColumn(3).y,
@@ -138,13 +128,16 @@ class _MeasurePageState extends State<MeasurePage> {
       radius: 0.006,
       materials: [material],
     );
+    //add sphere to the tapped point
     final node = ARKitNode(
       geometry: sphere,
       position: position,
     );
     arkitController.add(node);
     allNodeNames.add(node.name);
+
     if (lastPosition != null) {
+      //Draw a line
       final line = ARKitLine(
         fromVector: lastPosition!,
         toVector: position,
@@ -152,9 +145,11 @@ class _MeasurePageState extends State<MeasurePage> {
       final lineNode = ARKitNode(geometry: line);
       arkitController.add(lineNode);
       allLineNames.add(lineNode.name);
-
+      //Calculate distance
       final distance = _calculateDistanceBetweenPoints(position, lastPosition!);
+      //Calculate middle point
       final point = _getMiddleVector(position, lastPosition!);
+      //Write distance in the middle point
       _drawText(distance, point);
     }
     lastPosition = position;
@@ -200,5 +195,19 @@ class _MeasurePageState extends State<MeasurePage> {
     for (int i = 0; i < allLineNames.length; i++) {
       arkitController.remove(allLineNames[i]);
     }
+  }
+
+  void _toggleVisibility() {
+    if (_isVisible) removeCube();
+    if (!_isVisible) addCube();
+    setState(() {
+      _isVisible = !_isVisible;
+    });
+  }
+
+  @override
+  void dispose() {
+    arkitController.dispose();
+    super.dispose();
   }
 }
