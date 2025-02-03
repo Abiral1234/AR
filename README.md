@@ -23,7 +23,7 @@ Now that the  code is in the folder
 ```
 - Step 4: Connect your ios device to your laptop and run the code
   
-  Note: Make sure to use Xcode to run the code for the first time
+ > **Note:** Make sure to use Xcode to run the code for the first time
 
 ## Overview
 The app uses the 'arkit_plugin' package for AR View.
