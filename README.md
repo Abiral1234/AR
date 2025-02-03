@@ -29,5 +29,5 @@ Now that the  code is in the folder
 The app uses the 'arkit_plugin' package for AR View.
 Here is the demo of the app:
 
-![Demo](demo.mp4)
+https://github.com/user-attachments/assets/c8376ac9-7c73-46d7-b618-d17527fa02c0
 
