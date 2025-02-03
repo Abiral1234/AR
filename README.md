@@ -25,6 +25,11 @@ Now that the  code is in the folder
   
  > **Note:** Make sure to use Xcode to run the code for the first time
 
+## Challenges faced
+- Learned how to use the arkit_plugin package
+- Learned how to create AR View and put objects in AR View.
+- Learned how to calculate the distance between two points and show it in text.
+
 ## Overview
 The app uses the 'arkit_plugin' package for AR View.
 Here is the demo of the app:
