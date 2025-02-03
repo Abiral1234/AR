@@ -1,16 +1,23 @@
-# ar
+# AR Distance Measurement Application
 
-A new Flutter project.
+A Flutter app to measure the distance between two points in AR.
 
-## Getting Started
+## How to run the app?
+- Step 1: Create a folder for the app (For eg: AR)
+- Step 2: Open terminal on the folder and run following command
+  git init
+  git remote add origin https://github.com/Abiral1234/AR.git
+  git pull origin main
+- Now that your code is in the folder
+- Step 3: Run the following code in the terminal
+  flutter pub get
+- Step 4: Connect your ios device to your laptop and run the code
 
-This project is a starting point for a Flutter application.
+## Overview
+The app uses the 'arkit_plugin' package for AR View.
+Here is the demo of the app:
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<video width="600" controls>
+  <source src="demo.MP4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
